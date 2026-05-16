@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FinanceTrack - Onboarding Loading</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#9f4122",
+                        "secondary-container": "#bdefbe",
+                        "on-surface": "#2c160e",
+                        "on-error": "#ffffff",
+                        "on-background": "#2c160e",
+                        "primary-fixed-dim": "#ffb59e",
+                        "primary-fixed": "#ffdbd0",
+                        "surface-bright": "#fff8f6",
+                        "surface-container": "#ffe9e3",
+                        "on-primary-container": "#752305",
+                        "tertiary-fixed-dim": "#d1c6a2",
+                        "primary": "#9f4122",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#7f2a0d",
+                        "outline-variant": "#ddc0b8",
+                        "inverse-on-surface": "#ffede8",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#fff1ed",
+                        "on-secondary-container": "#426e47",
+                        "inverse-surface": "#442a22",
+                        "surface-container-high": "#ffe2da",
+                        "on-secondary-fixed-variant": "#24502c",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#3a0b00",
+                        "surface-container-highest": "#ffdbd0",
+                        "primary-container": "#ff8a65",
+                        "tertiary": "#665e41",
+                        "background": "#fff8f6",
+                        "surface": "#fff8f6",
+                        "secondary-fixed": "#bdefbe",
+                        "surface-variant": "#ffdbd0",
+                        "secondary": "#3c6842",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#fbd1c4",
+                        "on-tertiary-fixed-variant": "#4e472b",
+                        "tertiary-fixed": "#eee2bd",
+                        "tertiary-container": "#b4aa88",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#89726b",
+                        "on-tertiary-fixed": "#211b05",
+                        "on-surface-variant": "#56423c",
+                        "on-tertiary-container": "#453f24",
+                        "secondary-fixed-dim": "#a2d3a4",
+                        "inverse-primary": "#ffb59e",
+                        "on-secondary-fixed": "#002109",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "gutter": "16px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["13px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .animate-pulse-soft {
+            animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .6; }
+        }
+        .spin-slow {
+            animation: spin 3s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation (Suppressed for Onboarding/Transactional, but requested layout mirror) -->
+<!-- We will keep a very minimal header for brand presence if needed, but standard onboarding is usually fullscreen. Let's provide a simple brand mark at top -->
+<header class="w-full px-container-padding py-stack-lg flex justify-center items-center">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-high animate-pulse-soft"></div>
+<div class="h-6 w-32 bg-surface-container-high rounded-full animate-pulse-soft"></div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col items-center justify-center px-container-padding pb-stack-lg w-full max-w-md mx-auto">
+<!-- Illustration / Loading Indicator Area -->
+<div class="w-full aspect-[4/3] relative mb-stack-lg rounded-xl overflow-hidden bg-surface-container flex items-center justify-center shadow-[0_4px_12px_0_rgba(93,64,55,0.08)]">
+<!-- Placeholder Image if needed, or loading animation. The prompt asks for a loading state mirroring the onboarding screen. -->
+<div class="absolute inset-0 flex items-center justify-center bg-surface-container-low/50 z-10 backdrop-blur-sm">
+<!-- Honey pot / paw print loading indicator -->
+<div class="w-24 h-24 rounded-full bg-primary-container flex items-center justify-center shadow-[0_12px_24px_-4px_rgba(93,64,55,0.12)] animate-pulse-soft">
+<span class="material-symbols-outlined text-on-primary-container text-[48px] spin-slow" style="font-variation-settings: 'FILL' 1;">
+                        pets
+                    </span>
+</div>
+</div>
+<!-- Using the provided image behind the blur to show it's loading the actual image -->
+<img alt="" class="w-full h-full object-cover opacity-30" src="https://lh3.googleusercontent.com/aida/ADBb0uie_Xkt3Zw9tszbf4kYyzri14aizxSNLTGzMUN_1k85cpxTQJY7iCOoyKpM42ugxcJ-tCG2MGaOnfLmREpEZxmgRWK2vpD3iSsdf8iEii-E8V459GKZpguMom2YY_yyItvwn5A-66pZTNK9vtSDCrMVPxStDmfp5ja43flLTLuIAySjC4EJGQciRhD97mdw-IN8jta7jvFVfgvCTntOR063ggOfX-f9e0HHADwH_WmvocOrQHe3e4Px-Heq1UW_ZnJTicnpdL1_HQ"/>
+</div>
+<!-- Text Skeleton Area -->
+<div class="w-full flex flex-col items-center space-y-stack-md mb-stack-lg">
+<!-- Headline Skeleton -->
+<div class="h-8 w-3/4 bg-surface-container-high rounded-full animate-pulse-soft mb-2"></div>
+<!-- Body Skeletons -->
+<div class="w-full flex flex-col items-center space-y-2">
+<div class="h-4 w-full bg-surface-container rounded-full animate-pulse-soft"></div>
+<div class="h-4 w-5/6 bg-surface-container rounded-full animate-pulse-soft"></div>
+<div class="h-4 w-4/6 bg-surface-container rounded-full animate-pulse-soft"></div>
+</div>
+</div>
+<!-- Button Skeleton Area -->
+<div class="w-full mt-auto pt-stack-lg">
+<!-- Paging indicators skeleton -->
+<div class="flex justify-center gap-2 mb-stack-md">
+<div class="w-2 h-2 rounded-full bg-surface-container-high animate-pulse-soft"></div>
+<div class="w-6 h-2 rounded-full bg-primary-container animate-pulse-soft"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-high animate-pulse-soft"></div>
+</div>
+<!-- Primary Action Button Skeleton -->
+<div class="w-full h-14 bg-surface-container-high rounded-full flex items-center justify-center shadow-[0_8px_16px_-4px_rgba(93,64,55,0.08)] border-b-4 border-surface-variant animate-pulse-soft">
+<div class="h-5 w-32 bg-surface-variant rounded-full"></div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Your Profile</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#442a22",
+                        "primary-fixed": "#ffdbd0",
+                        "on-tertiary-fixed-variant": "#4e472b",
+                        "primary": "#9f4122",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#bdefbe",
+                        "primary-fixed-dim": "#ffb59e",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#752305",
+                        "tertiary-fixed": "#eee2bd",
+                        "on-primary-fixed": "#3a0b00",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#9f4122",
+                        "surface-container-highest": "#ffdbd0",
+                        "on-background": "#2c160e",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#453f24",
+                        "surface-container-low": "#fff1ed",
+                        "secondary": "#3c6842",
+                        "secondary-container": "#bdefbe",
+                        "tertiary": "#665e41",
+                        "primary-container": "#ff8a65",
+                        "error": "#ba1a1a",
+                        "surface-container": "#ffe9e3",
+                        "inverse-on-surface": "#ffede8",
+                        "on-tertiary-fixed": "#211b05",
+                        "on-secondary-container": "#426e47",
+                        "on-secondary-fixed-variant": "#24502c",
+                        "tertiary-fixed-dim": "#d1c6a2",
+                        "outline": "#89726b",
+                        "surface-container-high": "#ffe2da",
+                        "surface-bright": "#fff8f6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#56423c",
+                        "background": "#fff8f6",
+                        "surface-dim": "#fbd1c4",
+                        "on-secondary-fixed": "#002109",
+                        "secondary-fixed-dim": "#a2d3a4",
+                        "inverse-primary": "#ffb59e",
+                        "surface": "#fff8f6",
+                        "surface-variant": "#ffdbd0",
+                        "on-surface": "#2c160e",
+                        "on-primary-fixed-variant": "#7f2a0d",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#ddc0b8",
+                        "tertiary-container": "#b4aa88"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "container-padding": "24px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-sm": ["13px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom styles to handle specific tactile UI needs without writing arbitrary classes */
+        .warm-shadow-card {
+            box-shadow: 0 12px 32px rgba(93, 64, 55, 0.08);
+        }
+        .warm-shadow-btn {
+            box-shadow: 0 8px 16px rgba(93, 64, 55, 0.12);
+        }
+        .chunky-btn {
+            border-bottom-width: 4px;
+        }
+        .chunky-btn:active {
+            transform: translateY(2px);
+            border-bottom-width: 2px;
+            margin-top: 2px;
+        }
+        .input-tactile:focus {
+            box-shadow: 0 0 0 2px var(--tw-colors-primary-container);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center p-container-padding font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- 
+        Navigation Shells (TopAppBar & BottomNavBar) are intentionally excluded here.
+        Reason: This is a linear/transactional onboarding screen ("Profile Creation").
+        The user is in a focused journey and should not have global navigation options until the profile is created.
+    -->
+<main class="w-full max-w-md relative flex flex-col items-center">
+<!-- Mascot Peeking Element -->
+<div class="w-28 h-28 mb-[-32px] relative z-10 rounded-full overflow-hidden border-4 border-surface shadow-sm">
+<img alt="Friendly Mascot" class="w-full h-full object-cover object-top" data-alt="A cute, soft, round stylized illustrated bear mascot face looking cheerfully straight ahead. The illustration style is flat, vector-based, and highly tactile, resembling modern stationery design. The color palette features warm creams, soft oranges, and gentle earth tones, sitting against a clean, warm #fff8f6 background. The mood is friendly, inviting, and cozy, perfectly embodying an 'Emotional Finance' aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2NRuNPf2-4ec1yrGcfUqjNe844SnoCFEzydbxQWfOYkLP6cBZTFiD9TWqd8Vyhb-iHWLPP8KvbzHRa4FBEXrTtr-7ArYYP-FXYUOazBJeK0-TmKkrcO89E2Uc3tzF5WmOzWfGjSiGruF-1YcVt5eOuQGOyQ9u4FjzZgdyggbGhdia8bufE_piENHQ2KDP2A1UmAG6f4RTzwJfug1JT-KwKGo0scIZhicbguzn9-bRTHd42wg7oERTnqchVnih_kRfHLGDJ4vvkmCD"/>
+</div>
+<!-- Main Card Canvas -->
+<div class="bg-surface w-full rounded-xl p-container-padding pt-[48px] warm-shadow-card relative z-20 flex flex-col items-center text-center border border-surface-container-high">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-unit">Create Your Profile</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg max-w-[280px]">
+                Enter your profile name <br/> <span class="opacity-80 text-[14px]">(e.g., Personal, Job, or Company)</span>
+</p>
+<form action="#" class="w-full flex flex-col items-center" method="POST" onsubmit="event.preventDefault();">
+<div class="w-full relative mb-stack-lg group">
+<input autocomplete="off" class="input-tactile w-full bg-surface-container-lowest border-2 border-outline-variant focus:border-primary rounded-lg py-4 px-6 font-headline-md text-headline-md text-center text-on-surface placeholder:text-outline-variant transition-all outline-none" id="profileName" name="profileName" placeholder="My Journal" type="text"/>
+</div>
+<button class="chunky-btn warm-shadow-btn w-full bg-primary text-on-primary font-label-sm text-label-sm py-4 rounded-full border-on-primary-fixed-variant hover:bg-surface-tint transition-all flex items-center justify-center gap-2" type="submit">
+                    Let's Start
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">arrow_forward</span>
+</button>
+</form>
+</div>
+<!-- Decorative subtle element below card for visual balance -->
+<div class="mt-stack-lg text-on-surface-variant opacity-60 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span class="font-label-sm text-label-sm">Your data is stored securely</span>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        .warm-shadow {
+            box-shadow: 0 4px 12px 0 rgba(93, 64, 55, 0.08);
+        }
+        .warm-shadow-lg {
+            box-shadow: 0 12px 24px 0 rgba(93, 64, 55, 0.12);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#442a22",
+                        "primary-fixed": "#ffdbd0",
+                        "on-tertiary-fixed-variant": "#4e472b",
+                        "primary": "#9f4122",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#bdefbe",
+                        "primary-fixed-dim": "#ffb59e",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#752305",
+                        "tertiary-fixed": "#eee2bd",
+                        "on-primary-fixed": "#3a0b00",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#9f4122",
+                        "surface-container-highest": "#ffdbd0",
+                        "on-background": "#2c160e",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#453f24",
+                        "surface-container-low": "#fff1ed",
+                        "secondary": "#3c6842",
+                        "secondary-container": "#bdefbe",
+                        "tertiary": "#665e41",
+                        "primary-container": "#ff8a65",
+                        "error": "#ba1a1a",
+                        "surface-container": "#ffe9e3",
+                        "inverse-on-surface": "#ffede8",
+                        "on-tertiary-fixed": "#211b05",
+                        "on-secondary-container": "#426e47",
+                        "on-secondary-fixed-variant": "#24502c",
+                        "tertiary-fixed-dim": "#d1c6a2",
+                        "outline": "#89726b",
+                        "surface-container-high": "#ffe2da",
+                        "surface-bright": "#fff8f6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#56423c",
+                        "background": "#fff8f6",
+                        "surface-dim": "#fbd1c4",
+                        "on-secondary-fixed": "#002109",
+                        "secondary-fixed-dim": "#a2d3a4",
+                        "inverse-primary": "#ffb59e",
+                        "surface": "#fff8f6",
+                        "surface-variant": "#ffdbd0",
+                        "on-surface": "#2c160e",
+                        "on-primary-fixed-variant": "#7f2a0d",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#ddc0b8",
+                        "tertiary-container": "#b4aa88"
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        lg: "2rem",
+                        xl: "3rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "container-padding": "24px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "unit": "8px"
+                    },
+                    fontFamily: {
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"]
+                    },
+                    fontSize: {
+                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "500" }],
+                        "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "500" }],
+                        "headline-lg": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "label-sm": ["13px", { lineHeight: "1.4", letterSpacing: "0.02em", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden pb-[100px]">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim text-primary dark:text-primary-fixed-dim font-headline-md text-headline-md w-full top-0 z-40 sticky flex justify-between items-center px-container-padding py-stack-md transition-all">
+<div class="flex items-center gap-3">
+<img alt="Avatar" class="w-10 h-10 rounded-full object-cover border-2 border-primary-container" data-alt="A small, circular avatar portrait of a friendly, stylized illustrated brown bear face against a soft pastel background, embodying a cozy and approachable aesthetic suitable for a financial tracking app mascot." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABfY6svzqW_QgGO1Tn3_w3kxkFAAhOPJwDlq5L5n10DK0XzWiasq-eOmoRK9v7-oh_dQ3XDVvXqd3xVR0p2fYYEbOhpU0OdEJt5JljQFZnr9LssSr1g7kYTkbL9t24ldBO81PwpM2tYI6UNT20bMMbWMPAG_lzsDurRSNfn1b3uuNRj2Nn_eFJflpTd3nEdhCptS9ZSQ0i8pOIxTGHog_xnFcorI8I4FfYpyqjLlZajxfunegvGvRcDt3nyB1gvO0nmDeZyA5IH3gU"/>
+<h1 class="font-headline-lg text-headline-lg text-primary dark:text-primary-fixed-dim">FinanceTrack</h1>
+</div>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-[28px]">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-container-padding py-stack-md flex flex-col gap-stack-lg max-w-2xl mx-auto w-full relative z-10">
+<!-- Welcome Section -->
+<div class="flex flex-col gap-unit">
+<p class="font-body-md text-body-md text-on-surface-variant">Welcome back!</p>
+<h2 class="font-headline-md text-headline-md text-on-surface">Here's your monthly overview.</h2>
+</div>
+<!-- Cards Container (Bento-ish) -->
+<div class="flex flex-col gap-stack-md">
+<!-- Income Card (Expanded) -->
+<div class="bg-surface-container-lowest rounded-xl warm-shadow border border-outline-variant overflow-hidden relative">
+<!-- Header -->
+<div class="p-container-padding flex flex-col sm:flex-row justify-between items-start sm:items-center gap-stack-sm bg-tertiary-fixed bg-opacity-20 border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-3xl">trending_up</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Income List</h3>
+</div>
+<div class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-headline-md text-headline-md">
+                        +$3,450.00
+                    </div>
+</div>
+<!-- Content List -->
+<div class="p-container-padding flex flex-col gap-stack-md bg-surface-container-lowest">
+<!-- Item 1 -->
+<div class="flex justify-between items-center">
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-surface">Salary</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Oct 01, 2023</span>
+</div>
+<span class="font-body-lg text-body-lg text-secondary">+$3,000.00</span>
+</div>
+<!-- Divider -->
+<hr class="border-outline-variant opacity-50"/>
+<!-- Item 2 -->
+<div class="flex justify-between items-center">
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-surface">Freelance Project</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Oct 15, 2023</span>
+</div>
+<span class="font-body-lg text-body-lg text-secondary">+$450.00</span>
+</div>
+</div>
+<!-- Mascot peek (decorative) -->
+<img alt="Decorative mascot" class="absolute top-0 right-10 w-20 opacity-20 hidden sm:block pointer-events-none" data-alt="A subtle, translucent illustration of a cozy, round cat mascot peeking over the top edge of a card, drawn in a warm, tactile, hand-drawn style with thick outlines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFvhp840ZuXpPggYysD12A2HHimXb6Ybp6_UKffsmb3JqUwi-TV7usPR8UXMbbkq5VOqUBFAfJ77degbmkur58UwX-kFKXbC-WJgOXEGWai5KDgbRkQ9yD9dtWfzDLfToo3jzgMnL8hiDftcxNCwf0HX7r-cg-OQJNT72Ahk_QxDXneHgM9-ci1NT8yqV9i15RucJ_0kk63mtD-sruAEAZHT7K3fD6gk3mIsSRnH_2NvrG--JI4R_MHwVyaOi7btaIX3Uwbr-U_EWT"/>
+</div>
+<!-- Outcome Card (Collapsed) -->
+<div class="bg-surface-container-lowest rounded-xl warm-shadow border border-outline-variant overflow-hidden">
+<div class="p-container-padding flex flex-col sm:flex-row justify-between items-start sm:items-center gap-stack-sm cursor-pointer hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined text-3xl">trending_down</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Outcome List</h3>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-error-container text-on-error-container px-4 py-2 rounded-full font-headline-md text-headline-md">
+                            -$2,250.00
+                        </div>
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Add Button -->
+<button class="fixed bottom-32 right-6 md:bottom-10 md:right-10 w-16 h-16 bg-primary text-on-primary rounded-full flex items-center justify-center warm-shadow-lg hover:bg-surface-tint transition-colors active:scale-95 border-b-[3px] border-[#7f2a0d] z-50">
+<span class="material-symbols-outlined text-4xl">add</span>
+</button>
+</main>
+<!-- Bottom Financial Summary Anchor -->
+<div class="fixed bottom-[80px] md:bottom-6 left-0 w-full flex justify-center z-40 pointer-events-none px-container-padding">
+<div class="bg-secondary-container text-on-secondary-container px-6 py-3 rounded-full warm-shadow-lg font-headline-md text-headline-md border border-[#a2d3a4] pointer-events-auto">
+            Saved $1,200
+        </div>
+</div>
+<!-- BottomNavBar -->
+<!-- Desktop Nav Fallback (Hidden on Mobile, Visible on md+) -->
+<!-- Usually handled within TopAppBar or a side nav in robust apps, but per instructions, BottomNav is hidden on md. -->
+<style>
+        @media (min-width: 768px) {
+            body { pb: 0; } /* Reset padding */
+        }
+    </style>
+</body></html>

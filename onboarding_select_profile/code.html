@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#665e41",
+                        "inverse-primary": "#ffb59e",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#24502c",
+                        "on-tertiary-fixed": "#211b05",
+                        "surface-tint": "#9f4122",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#453f24",
+                        "surface": "#fff8f6",
+                        "inverse-surface": "#442a22",
+                        "on-background": "#2c160e",
+                        "surface-container-high": "#ffe2da",
+                        "on-secondary-fixed": "#002109",
+                        "primary-fixed": "#ffdbd0",
+                        "on-surface": "#2c160e",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fff8f6",
+                        "secondary-fixed": "#bdefbe",
+                        "secondary": "#3c6842",
+                        "primary": "#9f4122",
+                        "primary-container": "#ff8a65",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#bdefbe",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#ffb59e",
+                        "surface-container-low": "#fff1ed",
+                        "inverse-on-surface": "#ffede8",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#3a0b00",
+                        "surface-container-highest": "#ffdbd0",
+                        "on-surface-variant": "#56423c",
+                        "surface-bright": "#fff8f6",
+                        "surface-dim": "#fbd1c4",
+                        "secondary-fixed-dim": "#a2d3a4",
+                        "outline-variant": "#ddc0b8",
+                        "surface-variant": "#ffdbd0",
+                        "on-primary-container": "#752305",
+                        "on-error": "#ffffff",
+                        "surface-container": "#ffe9e3",
+                        "tertiary-fixed-dim": "#d1c6a2",
+                        "on-secondary-container": "#426e47",
+                        "tertiary-container": "#b4aa88",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#7f2a0d",
+                        "tertiary-fixed": "#eee2bd",
+                        "on-tertiary-fixed-variant": "#4e472b",
+                        "outline": "#89726b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "container-padding": "24px",
+                        "gutter": "16px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "label-sm": ["13px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .warm-shadow-sm { box-shadow: 0 4px 12px rgba(93, 64, 55, 0.08); }
+        .warm-shadow-md { box-shadow: 0 8px 24px rgba(93, 64, 55, 0.12); }
+        .warm-shadow-lg { box-shadow: 0 12px 32px rgba(93, 64, 55, 0.16); }
+        .button-press { border-bottom: 3px solid rgba(0,0,0,0.15); transition: transform 0.1s, border-bottom-width 0.1s; }
+        .button-press:active { transform: translateY(2px); border-bottom-width: 1px; margin-bottom: 2px; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(93, 64, 55, 0.12); }
+        .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Main Container -->
+<main class="flex-1 flex flex-col items-center justify-center p-container-padding max-w-md mx-auto w-full relative z-10">
+<!-- Header Section -->
+<header class="text-center mb-stack-lg w-full flex flex-col items-center">
+<!-- Mascot Image -->
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface-container-lowest warm-shadow-md mb-stack-md bg-surface-variant flex items-center justify-center">
+<img alt="Cute friendly bear mascot" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoQ4P-Dw2a2BSy14uc3h2NBiJz65G7rMmUH6jEXxMge8AZGgUkcGr7XfIiA4EdD567Ojg3dpt9Bl3DsknqB1Zk79i9R53QeKKzJbjR35JinMYqvwLyEpsLkX0jRdfcSFmCnis1ztT3wA2-qAykLCR8ot2ANwh9Re9BjddR88S0OxzHw70WgH1hMh3CioLFCv_IQZSzg6qvds3wKgH148n_OsofHn-TbkiY89CRXpcOAXqXQCLAMziapkJiDVKO2GAInenn_LiB8AIn"/>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-stack-sm tracking-tight">Welcome back!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Who's tracking today?</p>
+</header>
+<!-- Profiles List -->
+<div class="w-full space-y-stack-md mb-stack-lg">
+<!-- Profile 1 -->
+<button class="w-full flex items-center p-stack-md bg-surface-container-lowest rounded-xl warm-shadow-sm card-hover border-2 border-transparent hover:border-primary-fixed group text-left transition-colors">
+<div class="w-14 h-14 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center mr-gutter flex-shrink-0">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+<div class="flex-1">
+<h2 class="font-headline-md text-[20px] text-on-surface mb-1">Personal Journal</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Last updated today</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</button>
+<!-- Profile 2 -->
+<button class="w-full flex items-center p-stack-md bg-surface-container-lowest rounded-xl warm-shadow-sm card-hover border-2 border-transparent hover:border-primary-fixed group text-left transition-colors">
+<div class="w-14 h-14 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center mr-gutter flex-shrink-0">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="flex-1">
+<h2 class="font-headline-md text-[20px] text-on-surface mb-1">Family Budget</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Last updated yesterday</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</button>
+<!-- Profile 3 -->
+<button class="w-full flex items-center p-stack-md bg-surface-container-lowest rounded-xl warm-shadow-sm card-hover border-2 border-transparent hover:border-primary-fixed group text-left transition-colors">
+<div class="w-14 h-14 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center mr-gutter flex-shrink-0">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">work</span>
+</div>
+<div class="flex-1">
+<h2 class="font-headline-md text-[20px] text-on-surface mb-1">Work Expenses</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Last updated 3 days ago</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</button>
+</div>
+<!-- Add New Profile Action -->
+<button class="w-full flex items-center justify-center p-stack-md bg-surface-container-low rounded-xl border-2 border-dashed border-outline-variant hover:border-primary text-primary hover:bg-surface-container transition-colors button-press warm-shadow-sm font-label-sm text-label-sm">
+<span class="material-symbols-outlined mr-unit">add</span>
+            Add New Profile
+        </button>
+</main>
+</body></html>

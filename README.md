@@ -1,5 +1,9 @@
 # 🐾 Pawsitive Finance Tracker
 
+<div align="center">
+  <img src="lib/assets/Idle_animation_only_headloop_cycle_animat.gif" width="200" alt="Pawsitive Bear Mascot" />
+</div>
+
 Welcome to **Pawsitive Finance Tracker**, a cute and friendly Flutter app designed to help you track your income and expenses with ease!
 
 > **Note:** This is my very first Flutter app! 🎉 I built it to learn the framework and create something useful and fun.

@@ -23,9 +23,9 @@ Welcome to **Pawsitive Finance Tracker**, a cute and friendly Flutter app design
   <img src="assets/screenshots/Screenshot_20260719_235028_com.example.finance_track.jpg" width="200" />
   <img src="assets/screenshots/Screenshot_20260719_235050_com.example.finance_track.jpg" width="200" />
   <img src="assets/screenshots/Screenshot_20260719_235100_com.example.finance_track.jpg" width="200" />
-  <img src="assets/screenshots/Screenshot_20260719_235103_com.example.finance_track.jpg" width="200" />
+  
   <img src="assets/screenshots/Screenshot_20260719_235119_com.example.finance_track.jpg" width="200" />
-  <img src="assets/screenshots/Screenshot_20260719_235123_com.example.finance_track.jpg" width="200" />
+ 
 </div>
 
 ## 🌟 Features

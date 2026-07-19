@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:finance_track/theme/app_theme.dart';
+import 'package:finance_track/models/transaction.dart';
+import 'package:intl/intl.dart';
+import 'package:finance_track/l10n/app_translations.dart';
+import 'package:finance_track/services/settings_service.dart';
 
 class AddTransactionScreen extends StatefulWidget {
-  const AddTransactionScreen({super.key});
+  final String currency;
+
+  const AddTransactionScreen({super.key, required this.currency});
 
   @override
   State<AddTransactionScreen> createState() => _AddTransactionScreenState();
@@ -12,6 +18,82 @@ class AddTransactionScreen extends StatefulWidget {
 class _AddTransactionScreenState extends State<AddTransactionScreen> {
   bool isOutcome = true;
   bool isToday = true;
+  DateTime selectedDate = DateTime.now();
+
+  String get _currencySymbol {
+    if (widget.currency == 'IQD') {
+      return SettingsService.isArabic ? 'د.ع' : 'IQD';
+    }
+    return '\$';
+  }
+
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _amountController = TextEditingController();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: ColorScheme.light(
+              primary: AppTheme.primary,
+              onPrimary: AppTheme.onPrimary,
+              surface: AppTheme.surfaceContainerLowest,
+              onSurface: AppTheme.onSurface,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+    if (picked != null) {
+      setState(() {
+        selectedDate = picked;
+        isToday = false;
+      });
+    }
+  }
+
+  void _saveTransaction() {
+    final title = _titleController.text.trim();
+    final amountText = _amountController.text.trim();
+
+    if (title.isEmpty || amountText.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(context.tr('please_enter_title'))));
+      return;
+    }
+
+    final amount = double.tryParse(amountText);
+    if (amount == null || amount <= 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(context.tr('please_enter_positive'))),
+      );
+      return;
+    }
+
+    final transaction = Transaction(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      title: title,
+      amount: amount,
+      date: isToday ? DateTime.now() : selectedDate,
+      isIncome: !isOutcome,
+    );
+
+    Navigator.pop(context, transaction);
+  }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _amountController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,24 +124,15 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
                 children: [
-                  const SizedBox(height: 64),
                   // Mascot Peeking
                   Transform.translate(
-                    offset: const Offset(0, 32),
-                    child: Container(
-                      width: 128,
-                      height: 128,
-                      decoration: BoxDecoration(shape: BoxShape.circle),
-                      child: ClipOval(
-                        child: Align(
-                          alignment: Alignment.topCenter,
-                          heightFactor: 0.5,
-                          child: Image.network(
-                            'https://lh3.googleusercontent.com/aida-public/AB6AXuCX1-mf-jzzTRu-uIEDeHHSovjiFtQrmWBQgfmh3GqDEeV6SnyZBRqy8dm_aEgJ7BnztLfiN4W-KtizR2TZA_ApKbFFbsYuftRrXfmSQcn8jCL9J8dyoXYT9-NyqEZ2ebVbmgLmLz9x_izhAXdNd9gxPbI4vgAte0IwQXqbjD-nVTDfzvOE8ACGIhii--e5ZbjEkE0NR66VvN9svKvrDR59Gl9wz3rD4RPwX67UsOzPXBN_ARQy2qQyiF1Taef4HAQ2le3y-Xij7tUP',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
+                    offset: const Offset(0, 9),
+                    child: Image.asset(
+                      'lib/assets/transaction_page_icon(noBackground).png',
+                      width: 220,
+                      height: 220,
+                      fit: BoxFit.contain,
+                      alignment: Alignment.bottomCenter,
                     ),
                   ),
                   // Card Body
@@ -81,7 +154,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                               children: [
                                 const SizedBox(width: 32),
                                 Text(
-                                  'New Transaction',
+                                  context.tr('new_transaction'),
                                   style: Theme.of(
                                     context,
                                   ).textTheme.headlineMedium,
@@ -143,7 +216,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                                             ),
                                             const SizedBox(width: 8),
                                             Text(
-                                              'Outcome',
+                                              context.tr('outcome'),
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .labelSmall
@@ -196,7 +269,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                                             ),
                                             const SizedBox(width: 8),
                                             Text(
-                                              'Income',
+                                              context.tr('income'),
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .labelSmall
@@ -226,16 +299,17 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                                     bottom: 8,
                                   ),
                                   child: Text(
-                                    'Item Name',
+                                    context.tr('item_name'),
                                     style: Theme.of(
                                       context,
                                     ).textTheme.labelSmall,
                                   ),
                                 ),
                                 TextField(
+                                  controller: _titleController,
                                   decoration: InputDecoration(
-                                    hintText: 'What did you buy?',
-                                    prefixIcon: const Icon(
+                                    hintText: context.tr('what_did_you_buy'),
+                                    prefixIcon: Icon(
                                       Icons.shopping_bag,
                                       color: AppTheme.primary,
                                     ),
@@ -247,7 +321,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(12),
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: AppTheme.primary,
                                         width: 2,
                                       ),
@@ -267,27 +341,33 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                                     bottom: 8,
                                   ),
                                   child: Text(
-                                    'Amount',
+                                    context.tr('amount'),
                                     style: Theme.of(
                                       context,
                                     ).textTheme.labelSmall,
                                   ),
                                 ),
                                 TextField(
-                                  keyboardType: TextInputType.number,
+                                  controller: _amountController,
+                                  keyboardType:
+                                      const TextInputType.numberWithOptions(
+                                        decimal: true,
+                                      ),
                                   textAlign: TextAlign.right,
                                   style: Theme.of(
                                     context,
                                   ).textTheme.headlineLarge,
                                   decoration: InputDecoration(
-                                    hintText: '0.00',
+                                    hintText: widget.currency == 'IQD'
+                                        ? '0'
+                                        : '0.00',
                                     prefixIcon: Padding(
                                       padding: const EdgeInsets.only(
                                         left: 16,
                                         top: 12,
                                       ),
                                       child: Text(
-                                        '\$',
+                                        _currencySymbol,
                                         style: Theme.of(context)
                                             .textTheme
                                             .headlineMedium
@@ -302,7 +382,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(12),
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: AppTheme.primary,
                                         width: 2,
                                       ),
@@ -322,7 +402,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                                     bottom: 8,
                                   ),
                                   child: Text(
-                                    'When did this happen?',
+                                    context.tr('when_did_this_happen'),
                                     style: Theme.of(
                                       context,
                                     ).textTheme.labelSmall,
@@ -364,7 +444,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                                               ),
                                               const SizedBox(height: 8),
                                               Text(
-                                                'Today',
+                                                context.tr('today'),
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .labelSmall
@@ -384,8 +464,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                                     const SizedBox(width: 16),
                                     Expanded(
                                       child: GestureDetector(
-                                        onTap: () =>
-                                            setState(() => isToday = false),
+                                        onTap: () => _selectDate(context),
                                         child: Container(
                                           padding: const EdgeInsets.symmetric(
                                             vertical: 16,
@@ -416,7 +495,16 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                                               ),
                                               const SizedBox(height: 8),
                                               Text(
-                                                'Custom',
+                                                !isToday
+                                                    ? context.formatNumber(
+                                                        DateFormat(
+                                                          'MMM dd, yyyy',
+                                                          Localizations.localeOf(
+                                                            context,
+                                                          ).languageCode,
+                                                        ).format(selectedDate),
+                                                      )
+                                                    : context.tr('custom'),
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .labelSmall
@@ -466,17 +554,15 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                                         ),
                                       ),
                                     ),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
+                                onPressed: _saveTransaction,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Icon(Icons.add_circle, size: 24),
-                                    SizedBox(width: 8),
+                                  children: [
+                                    const Icon(Icons.add_circle, size: 24),
+                                    const SizedBox(width: 8),
                                     Text(
-                                      'Save Transaction',
-                                      style: TextStyle(
+                                      context.tr('save_transaction'),
+                                      style: const TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w700,
                                       ),

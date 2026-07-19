@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add/Edit Recipe Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#9f4122",
+                        "on-secondary-fixed": "#062010",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffe087",
+                        "surface-bright": "#fff8f6",
+                        "on-secondary-fixed-variant": "#334d38",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#f9d1c8",
+                        "secondary": "#4a654f",
+                        "on-surface-variant": "#56423c",
+                        "on-primary-fixed-variant": "#7f2a0d",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#3a0b00",
+                        "on-tertiary-container": "#4d3d00",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#ffb59e",
+                        "surface": "#fff8f6",
+                        "on-secondary-container": "#4e6953",
+                        "primary-fixed": "#ffdbd0",
+                        "on-tertiary-fixed": "#241a00",
+                        "inverse-surface": "#432a25",
+                        "surface-container": "#ffe9e4",
+                        "outline": "#89726b",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#fff0ed",
+                        "secondary-container": "#c9e7cc",
+                        "inverse-primary": "#ffb59e",
+                        "primary": "#9f4122",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#2b1611",
+                        "tertiary-fixed-dim": "#ebc23e",
+                        "primary-container": "#ff8a65",
+                        "tertiary-container": "#cca620",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "inverse-on-surface": "#ffede9",
+                        "secondary-fixed-dim": "#b0ceb4",
+                        "on-background": "#2b1611",
+                        "background": "#fff8f6",
+                        "secondary-fixed": "#cceacf",
+                        "on-primary-container": "#752305",
+                        "surface-container-high": "#ffe2db",
+                        "surface-container-highest": "#ffdad2",
+                        "surface-variant": "#ffdad2",
+                        "outline-variant": "#ddc0b8",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#735c00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "stack-lg": "48px",
+                        "container-padding-mobile": "20px",
+                        "gutter": "24px",
+                        "container-padding-desktop": "40px",
+                        "base": "8px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "title-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-safe">
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md text-primary dark:text-primary-fixed-dim font-title-md text-title-md docked full-width top-0 z-40 bg-surface-bright dark:bg-surface-dim flex justify-between items-center w-full px-container-padding-mobile py-2 shadow-none border-none sticky">
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-transform scale-95 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary dark:text-primary-fixed tracking-tight">Create New Recipe</h1>
+<button class="font-label-sm text-label-sm text-primary hover:bg-surface-container-low transition-transform scale-95 px-4 py-2 rounded-full">
+            Save
+        </button>
+</header>
+<!-- Main Content -->
+<main class="w-full max-w-3xl mx-auto px-container-padding-mobile md:px-container-padding-desktop py-stack-md flex flex-col gap-stack-lg">
+<!-- Image Upload Section -->
+<section class="w-full aspect-[4/3] md:aspect-video rounded-lg border-2 border-dashed border-outline-variant bg-surface-container-lowest flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container-low transition-colors duration-200">
+<div class="bg-primary-container text-on-primary-container p-4 rounded-full mb-stack-sm shadow-[0_4px_20px_0_rgba(78,52,46,0.05)]">
+<span class="material-symbols-outlined text-3xl" data-icon="photo_camera" data-weight="fill">photo_camera</span>
+</div>
+<p class="font-title-md text-title-md text-on-surface">Add Cover Photo</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 text-center max-w-[200px]">High quality, well-lit photos make your recipe shine.</p>
+</section>
+<!-- Basic Info Section -->
+<section class="flex flex-col gap-stack-md">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="recipe-title">Recipe Title</label>
+<input class="w-full bg-surface-container-lowest border-none rounded-lg p-4 font-title-md text-title-md text-on-surface placeholder:text-outline shadow-[0_4px_20px_0_rgba(78,52,46,0.05)] focus:ring-2 focus:ring-primary focus:outline-none transition-shadow" id="recipe-title" placeholder="e.g. Grandma's Cozy Cinnamon Rolls" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="estimated-time">Estimated Time (mins)</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline" data-icon="schedule">schedule</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-lg py-4 pl-12 pr-4 font-body-lg text-body-lg text-on-surface placeholder:text-outline shadow-[0_4px_20px_0_rgba(78,52,46,0.05)] focus:ring-2 focus:ring-primary focus:outline-none transition-shadow" id="estimated-time" placeholder="45" type="number"/>
+</div>
+</div>
+</section>
+<!-- Ingredients Section -->
+<section class="flex flex-col gap-stack-md bg-surface-container-lowest p-stack-md rounded-lg shadow-[0_4px_20px_0_rgba(78,52,46,0.05)]">
+<div class="flex items-center justify-between border-b border-surface-container-high pb-4">
+<h2 class="font-title-md text-title-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary fill-icon" data-icon="grocery" data-weight="fill">grocery</span>
+                    Ingredients
+                </h2>
+</div>
+<ul class="flex flex-col gap-3 mt-2">
+<li class="flex items-center gap-3 font-body-lg text-body-lg text-on-surface group">
+<div class="w-2 h-2 rounded-full bg-secondary-container shrink-0"></div>
+<span class="flex-grow">2 Large Brown Eggs</span>
+<button class="text-outline hover:text-error transition-colors opacity-0 group-hover:opacity-100 p-1">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</li>
+<li class="flex items-center gap-3 font-body-lg text-body-lg text-on-surface group">
+<div class="w-2 h-2 rounded-full bg-secondary-container shrink-0"></div>
+<span class="flex-grow">1 Cup All-Purpose Flour</span>
+<button class="text-outline hover:text-error transition-colors opacity-0 group-hover:opacity-100 p-1">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+</li>
+</ul>
+<div class="flex items-center gap-3 mt-4">
+<input class="flex-grow bg-surface border-none rounded-full py-3 px-5 font-body-md text-body-md text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Add next ingredient..." type="text"/>
+<button class="bg-primary text-on-primary rounded-full px-5 py-3 font-label-sm text-label-sm tracking-wider hover:opacity-90 transition-opacity whitespace-nowrap flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                    ADD
+                </button>
+</div>
+</section>
+<!-- Instructions Section -->
+<section class="flex flex-col gap-stack-md">
+<div class="flex items-center gap-2">
+<h2 class="font-title-md text-title-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary fill-icon" data-icon="restaurant_menu" data-weight="fill">restaurant_menu</span>
+                    Instructions
+                </h2>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<!-- Completed Step -->
+<div class="bg-surface-container-lowest p-5 rounded-lg shadow-[0_4px_20px_0_rgba(78,52,46,0.05)] flex gap-4 relative group">
+<div class="font-headline-lg text-headline-lg text-outline-variant select-none w-8 shrink-0 leading-none">1</div>
+<div class="flex-grow">
+<p class="font-body-lg text-body-lg text-on-surface">Preheat the oven to 350°F (175°C). Line a 9x13 inch baking pan with parchment paper.</p>
+</div>
+<button class="absolute top-4 right-4 text-outline hover:text-on-surface transition-colors opacity-0 group-hover:opacity-100 p-1 bg-surface-container-lowest rounded-full shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+<!-- Active Typing Step -->
+<div class="bg-surface-container-low p-5 rounded-lg border border-primary/20 shadow-[0_8px_40px_0_rgba(78,52,46,0.08)] flex gap-4 relative">
+<div class="font-headline-lg text-headline-lg text-primary select-none w-8 shrink-0 leading-none">2</div>
+<div class="flex-grow flex flex-col gap-3">
+<textarea class="w-full bg-transparent border-none p-0 font-body-lg text-body-lg text-on-surface placeholder:text-outline focus:ring-0 resize-none" placeholder="Describe this step..." rows="3">In a large mixing bowl, whisk together the eggs and sugar until pale and frothy. Slowly slowly drizzle in the melted b</textarea>
+<div class="flex justify-end">
+<button class="bg-primary-container text-on-primary-container rounded-full px-4 py-2 font-label-sm text-label-sm tracking-wider hover:opacity-90 transition-opacity">
+                                Done
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full border-2 border-dashed border-outline-variant text-on-surface-variant font-title-md text-title-md py-6 rounded-lg flex items-center justify-center gap-2 hover:bg-surface-container-low hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                Add Another Step
+            </button>
+</section>
+<!-- Spacer for Bottom Nav if needed, though hidden on task pages -->
+<div class="h-24"></div>
+</main>
+</body></html>

@@ -20,7 +20,7 @@ class OnboardingScreen extends StatelessWidget {
               width: 128,
               height: 128,
               decoration: BoxDecoration(
-                color: AppTheme.primaryContainer.withOpacity(0.5),
+                color: AppTheme.primaryContainer.withValues(alpha: 0.5),
                 shape: BoxShape.circle,
               ),
               child: BackdropFilter(
@@ -36,7 +36,7 @@ class OnboardingScreen extends StatelessWidget {
               width: 192,
               height: 192,
               decoration: BoxDecoration(
-                color: AppTheme.secondaryContainer.withOpacity(0.3),
+                color: AppTheme.secondaryContainer.withValues(alpha: 0.3),
                 shape: BoxShape.circle,
               ),
               child: BackdropFilter(

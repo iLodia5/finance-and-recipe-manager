@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:finance_track/theme/app_theme.dart';
-import 'package:finance_track/screens/dashboard_screen.dart';
+import 'package:finance_track/screens/section_selection_hub_screen.dart';
 
 class OnboardingLoadingStateScreen extends StatefulWidget {
-  const OnboardingLoadingStateScreen({super.key});
+  final String profileName;
+  const OnboardingLoadingStateScreen({super.key, required this.profileName});
 
   @override
-  State<OnboardingLoadingStateScreen> createState() => _OnboardingLoadingStateScreenState();
+  State<OnboardingLoadingStateScreen> createState() =>
+      _OnboardingLoadingStateScreenState();
 }
 
-class _OnboardingLoadingStateScreenState extends State<OnboardingLoadingStateScreen> with SingleTickerProviderStateMixin {
+class _OnboardingLoadingStateScreenState
+    extends State<OnboardingLoadingStateScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _pulseController;
   late Animation<double> _pulseAnimation;
 
@@ -21,17 +25,19 @@ class _OnboardingLoadingStateScreenState extends State<OnboardingLoadingStateScr
       duration: const Duration(seconds: 1),
     )..repeat(reverse: true);
 
-    _pulseAnimation = Tween<double>(begin: 0.6, end: 1.0).animate(CurvedAnimation(
-      parent: _pulseController,
-      curve: Curves.easeInOut,
-    ));
+    _pulseAnimation = Tween<double>(begin: 0.6, end: 1.0).animate(
+      CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut),
+    );
 
-    // Simulate loading delay then navigate to dashboard
+    // Simulate loading delay then navigate to hub
     Future.delayed(const Duration(seconds: 2), () {
       if (mounted) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const DashboardScreen()),
+          MaterialPageRoute(
+            builder: (context) =>
+                SectionSelectionHubScreen(profileName: widget.profileName),
+          ),
         );
       }
     });
@@ -75,7 +81,7 @@ class _OnboardingLoadingStateScreenState extends State<OnboardingLoadingStateScr
                     Container(
                       width: 32,
                       height: 32,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         color: AppTheme.surfaceContainerHigh,
                         shape: BoxShape.circle,
                       ),
@@ -93,7 +99,7 @@ class _OnboardingLoadingStateScreenState extends State<OnboardingLoadingStateScr
                 ),
               ),
               const Spacer(),
-              
+
               // Loading Image Box
               Container(
                 width: double.infinity,
@@ -114,15 +120,19 @@ class _OnboardingLoadingStateScreenState extends State<OnboardingLoadingStateScr
                         shape: BoxShape.circle,
                         boxShadow: AppTheme.warmShadowLg,
                       ),
-                      child: const Center(
-                        child: Icon(Icons.pets, size: 48, color: AppTheme.onPrimaryContainer),
+                      child: Center(
+                        child: Icon(
+                          Icons.pets,
+                          size: 48,
+                          color: AppTheme.onPrimaryContainer,
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
               const SizedBox(height: 32),
-              
+
               // Text Skeletons
               _buildSkeletonLine(200, 32),
               const SizedBox(height: 16),
@@ -131,9 +141,9 @@ class _OnboardingLoadingStateScreenState extends State<OnboardingLoadingStateScr
               _buildSkeletonLine(double.infinity * 0.8, 16),
               const SizedBox(height: 8),
               _buildSkeletonLine(double.infinity * 0.6, 16),
-              
+
               const Spacer(),
-              
+
               // Dots Skeleton
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -156,7 +166,7 @@ class _OnboardingLoadingStateScreenState extends State<OnboardingLoadingStateScr
                 ],
               ),
               const SizedBox(height: 16),
-              
+
               // Button Skeleton
               _buildSkeletonLine(double.infinity, 56, radius: 16),
             ],

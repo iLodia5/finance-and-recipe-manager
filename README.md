@@ -6,10 +6,22 @@ Welcome to **Pawsitive Finance Tracker**, a cute and friendly Flutter app design
 
 ## 📸 Screenshots
 
-*(Replace this section with your actual screenshots. You can drag and drop images directly into GitHub's editor to upload them, or put them in an `assets/` folder and link them here.)*
-
 <div align="center">
-  <!-- <img src="link-to-your-image.png" width="250" /> -->
+  <img src="assets/screenshots/Screenshot_20260719_234319_com.example.finance_track.jpg" width="200" />
+  <img src="assets/screenshots/Screenshot_20260719_234334_com.example.finance_track.jpg" width="200" />
+  <img src="assets/screenshots/Screenshot_20260719_234339_com.example.finance_track.jpg" width="200" />
+  <img src="assets/screenshots/Screenshot_20260719_234345_com.example.finance_track.jpg" width="200" />
+  <img src="assets/screenshots/Screenshot_20260719_234358_com.example.finance_track.jpg" width="200" />
+  <img src="assets/screenshots/Screenshot_20260719_234408_com.example.finance_track.jpg" width="200" />
+  <img src="assets/screenshots/Screenshot_20260719_234519_com.example.finance_track.jpg" width="200" />
+  <img src="assets/screenshots/Screenshot_20260719_234613_com.example.finance_track.jpg" width="200" />
+  <img src="assets/screenshots/Screenshot_20260719_234621_com.example.finance_track.jpg" width="200" />
+  <img src="assets/screenshots/Screenshot_20260719_235028_com.example.finance_track.jpg" width="200" />
+  <img src="assets/screenshots/Screenshot_20260719_235050_com.example.finance_track.jpg" width="200" />
+  <img src="assets/screenshots/Screenshot_20260719_235100_com.example.finance_track.jpg" width="200" />
+  <img src="assets/screenshots/Screenshot_20260719_235103_com.example.finance_track.jpg" width="200" />
+  <img src="assets/screenshots/Screenshot_20260719_235119_com.example.finance_track.jpg" width="200" />
+  <img src="assets/screenshots/Screenshot_20260719_235123_com.example.finance_track.jpg" width="200" />
 </div>
 
 ## 🌟 Features

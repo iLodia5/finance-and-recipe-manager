@@ -2,6 +2,16 @@
 
 Welcome to **Pawsitive Finance Tracker**, a cute and friendly Flutter app designed to help you track your income and expenses with ease!
 
+> **Note:** This is my very first Flutter app! 🎉 I built it to learn the framework and create something useful and fun.
+
+## 📸 Screenshots
+
+*(Replace this section with your actual screenshots. You can drag and drop images directly into GitHub's editor to upload them, or put them in an `assets/` folder and link them here.)*
+
+<div align="center">
+  <!-- <img src="link-to-your-image.png" width="250" /> -->
+</div>
+
 ## 🌟 Features
 
 - **Finance Tracking**: Log your daily incomes and outcomes seamlessly.
